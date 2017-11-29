@@ -18,6 +18,13 @@
 	<commons-lang3.version>3.3.2</commons-lang3.version>
 	<mybatis.version>3.2.7</mybatis.version>
 	<hibernate-validator.version>5.0.3.Final</hibernate-validator.version>
+	<oracle.version>11.2private</oracle.version>
+	<commons-dbcp.version>1.2</commons-dbcp.version>
+	<junit.version>4.12</junit.version>
+	<assertj.version>1.7.0</assertj.version>
+	<mockito.version>1.10.16</mockito.version>
+	<tomcat-jdbc.version>7.0.57</tomcat-jdbc.version>
+	<druid.version>1.0.7</druid.version>
 	
 	<jdbc.driver.groupId>mysql</jdbc.driver.groupId>
 	<jdbc.driver.artifactId>mysql-connector-java</jdbc.driver.artifactId>
@@ -130,7 +137,52 @@
 		<artifactId>mybatis-spring</artifactId>
 		<version>1.2.2</version>
 	</dependency>
+	<dependency>
+		<groupId>com.oracle</groupId>
+		<artifactId>ojdbc14</artifactId>
+		<version>${oracle.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.data</groupId>
+		<artifactId>spring-data-jpa</artifactId>
+		<version>${spring-data-jpa.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>com.alibaba</groupId>
+		<artifactId>druid</artifactId>
+		<version>${druid.version}</version>
+	</dependency>
 	<!-- PERSISTENCE end -->
+	
+	<!-- TEST begin -->
+	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>${junit.version}</version>
+		<scope>test</scope>
+	</dependency>
+
+	<dependency>
+		<groupId>org.assertj</groupId>
+		<artifactId>assertj-core</artifactId>
+		<version>${assertj.version}</version>
+		<scope>test</scope>
+	</dependency>
+
+	<dependency>
+		<groupId>org.mockito</groupId>
+		<artifactId>mockito-core</artifactId>
+		<version>${mockito.version}</version>
+		<scope>test</scope>
+	</dependency>
+
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-test</artifactId>
+		<scope>test</scope>
+	</dependency>
+
+	<!-- TEST end -->
   </dependencies>
   <build>
     <finalName>wlw-wireless</finalName>

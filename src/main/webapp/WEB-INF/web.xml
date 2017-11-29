@@ -49,4 +49,14 @@
 	<session-config>
 		<session-timeout>20</session-timeout>
 	</session-config>
+	
+	<!-- druid监控页面，使用http://ip:port/druid/ 地址访问即可 -->
+	<servlet>
+		<servlet-name>druidStatView</servlet-name>
+		<servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>druidStatView</servlet-name>
+		<url-pattern>/druid/*</url-pattern>
+	</servlet-mapping>
 </web-app>
