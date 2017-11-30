@@ -29,6 +29,18 @@
 		<property name="typeAliasesPackage" value="com.wlw.wireless.entity" />
 		<!-- 显式指定Mapper文件位置 -->
 		<property name="mapperLocations" value="classpath:/mybatis/*Mapper.xml" />
+		<property name="plugins">
+			<array>
+			  <bean class="com.github.pagehelper.PageInterceptor">
+			    <property name="properties">
+			      <!--使用下面的方式配置参数，一行配置一个 -->
+			      <value>
+			        helperDialect=oracle
+			      </value>
+			    </property>
+			  </bean>
+			</array>
+	  </property>
 	</bean>
 	<!-- 扫描basePackage下所有以@MyBatisRepository标识的 接口-->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">

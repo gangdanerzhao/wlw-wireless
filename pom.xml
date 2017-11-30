@@ -25,6 +25,7 @@
 	<mockito.version>1.10.16</mockito.version>
 	<tomcat-jdbc.version>7.0.57</tomcat-jdbc.version>
 	<druid.version>1.0.7</druid.version>
+	<pagehelper.version>5.1.2</pagehelper.version>
 	
 	<jdbc.driver.groupId>mysql</jdbc.driver.groupId>
 	<jdbc.driver.artifactId>mysql-connector-java</jdbc.driver.artifactId>
@@ -151,6 +152,11 @@
 		<groupId>com.alibaba</groupId>
 		<artifactId>druid</artifactId>
 		<version>${druid.version}</version>
+	</dependency>
+	<dependency>
+	    <groupId>com.github.pagehelper</groupId>
+	    <artifactId>pagehelper</artifactId>
+	    <version>${pagehelper.version}</version>
 	</dependency>
 	<!-- PERSISTENCE end -->
 	

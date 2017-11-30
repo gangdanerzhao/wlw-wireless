@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="com.wlw.wireless.repository.StatisticsDao">
+	<!--
+		获取用户: 输出直接映射到对象, login_name列要"as loginName"以方便映射 ,team_id as "team.id"创建team对象并赋值
+	-->
+	<select id="getStkStatistics" parameterType="map" resultType="Statistics">
+			SELECT B.STK_NAME||'('||S.MODLE||')' AS stkName,
+		<choose>
+	        <when test="queryType == 'qty'">
+	           B.PUR_QTY as PUR,B.SALES_QTY as SALES, B.WH_QTY AS WH 
+	        </when>
+	        <otherwise>
+	            B.PUR_AMT as PUR,B.SALES_AMT as SALES, B.WH_AMT AS WH 
+	        </otherwise>
+	    </choose>
+	    	FROM BI_VENDOR_ERPJXC B LEFT JOIN STK_MAS S ON B.STK_C = S.STK_C
+	    <where>
+	    <if test="vendorCode != null and vendorCode != ''">
+	    	 AND B.VENDOR_CODE = #{vendorCode}
+	    </if>
+	    <if test="time != null and time != ''">
+	    	 AND B.F_MONTH = #{time}
+	    </if>
+	    <if test="stkName != null and stkName != ''">
+	    	 AND B.STK_NAME like CONCAT('%',#{stkName},'%')  
+	    </if>
+	    </where>
+	    <if test="orderBy != null and orderBy != ''">
+	    	 ORDER BY ${orderBy}
+	    </if>
+	</select>
+</mapper> 
