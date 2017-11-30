@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.github.pagehelper.PageHelper;
+import com.google.common.collect.Maps;
 import com.wlw.wireless.entity.statistics.Statistics;
+import com.wlw.wireless.query.Query;
 import com.wlw.wireless.service.statistics.StatisticsService;
+import com.wlw.wireless.util.BeanValidators;
 import com.wlw.wireless.util.MediaTypes;
 import com.wlw.wireless.util.PageBean;
 
@@ -30,7 +33,10 @@ public class StatisticsController {
 	private Validator validator;
 	
 	@RequestMapping(method = RequestMethod.GET, produces = MediaTypes.JSON_UTF_8)
-	public PageBean<Statistics> getStkStatistics(Map<String,Object> map) {
+	public PageBean<Statistics> getStkStatistics(Query query) {
+		BeanValidators.validateWithException(validator, query);
+		Map<String,Object> map = Maps.newHashMap();
+		map.put("vendorCode", query.getVendorCode());
 		PageHelper.startPage(1, 10);
 		List<Statistics> list = statisticsService.getStkStatistics(map);//分页插件演示
 		return new PageBean<Statistics>(list);
